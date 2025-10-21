@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield Academy - Master Cybersecurity Skills | Ethical Hacking Courses</title>
+    <meta name="description" content="Learn cybersecurity from experts. Courses in ethical hacking, penetration testing, network security, and digital forensics. Start your cybersecurity career today.">
+    <meta name="keywords" content="cybersecurity courses, ethical hacking, penetration testing, network security, cyber defense, information security, hacker training, cybersecurity certification">
+    <meta name="author" content="CyberShield Academy">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        :root {
+            --primary-color: #0a0a0a;
+            --secondary-color: #00ff41;
+            --accent-color: #0088ff;
+            --text-color: #f0f0f0;
+            --card-bg: #1a1a1a;
+            --light-bg: #2a2a2a;
+            --dark-bg: #050505;
+            --danger-color: #ff003c;
+            --success-color: #00ff41;
+            --warning-color: #ffaa00;
+        }
+
+        .light-theme {
+            --primary-color: #f0f0f0;
+            --secondary-color: #007bff;
+            --accent-color: #0056b3;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --light-bg: #f8f9fa;
+            --dark-bg: #e9ecef;
+            --danger-color: #dc3545;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* ===== AUTHENTICATION STYLES ===== */
+        #auth-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            position: relative;
+        }
+
+        .auth-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .auth-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            z-index: -1;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .auth-tab.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--light-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--secondary-color);
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.4);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ===== DASHBOARD STYLES ===== */
+        #dashboard {
+            display: none;
+            min-height: 100vh;
+            background-color: var(--primary-color);
+        }
+
+        .dashboard-header {
+            background-color: var(--dark-bg);
+            padding: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .dashboard-content {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--dark-bg);
+            padding: 20px;
+            border-right: 1px solid var(--secondary-color);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* ===== BALANCE SECTION ===== */
+        .balance-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+        }
+
+        .balance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .balance-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .add-balance-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .add-balance-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* ===== PAYMENT MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .payment-option {
+            background-color: var(--light-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-option:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .payment-option.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .payment-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .paytm-details {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .paytm-qr {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 15px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .paytm-number {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .payment-instructions {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .course-thumbnail {
+            height: 180px;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 136, 255, 0.1) 100%);
+        }
+
+        .course-info {
+            padding: 15px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .course-description {
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .course-difficulty {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .difficulty-beginner {
+            background-color: var(--success-color);
+            color: var(--primary-color);
+        }
+
+        .difficulty-intermediate {
+            background-color: var(--warning-color);
+            color: var(--primary-color);
+        }
+
+        .difficulty-advanced {
+            background-color: var(--danger-color);
+            color: var(--primary-color);
+        }
+
+        .course-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .purchase-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .purchase-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .purchase-btn.purchased {
+            background-color: var(--success-color);
+        }
+
+        /* ===== VIDEO PLAYER ===== */
+        .video-player-container {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 400px;
+            background-color: var(--dark-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #video-element {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .video-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .back-to-courses {
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-to-courses i {
+            margin-right: 5px;
+        }
+
+        .back-to-courses:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* ===== MY COURSES SECTION ===== */
+        #my-courses-section {
+            display: none;
+        }
+
+        .my-courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--light-bg);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        /* ===== PROFILE SECTION ===== */
+        #profile-section {
+            display: none;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-right: 20px;
+        }
+
+        .profile-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            margin-bottom: 0;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ===== TRANSACTIONS SECTION ===== */
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .transactions-table th,
+        .transactions-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .transactions-table th {
+            background-color: var(--light-bg);
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .transaction-amount.positive {
+            color: var(--success-color);
+        }
+
+        .transaction-amount.negative {
+            color: var(--danger-color);
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 4px;
+            color: var(--primary-color);
+            font-weight: bold;
+            z-index: 1001;
+            transform: translateX(150%);
+            transition: transform 0.3s;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+        }
+
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+
+        .notification.warning {
+            background-color: var(--warning-color);
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .dashboard-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--secondary-color);
+            }
+            
+            .courses-grid, .my-courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="theme-toggle">
+        <span>🌙</span>
+    </div>
+
+    <!-- Authentication Section -->
+    <div id="auth-container">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-block">
+                    <span class="spinner" id="login-spinner" style="display: none;"></span>
+                    Login
+                </button>
+            </form>
+            
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" class="form-control" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-block">
+                    <span class="spinner" id="signup-spinner" style="display: none;"></span>
+                    Sign Up
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard">
+        <header class="dashboard-header">
+            <div class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                CyberShield Academy
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <span id="user-name">User</span>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active" data-section="courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                    <li><a href="#" data-section="my-courses"><i class="fas fa-play-circle"></i> My Courses</a></li>
+                    <li><a href="#" data-section="profile"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="#" data-section="transactions"><i class="fas fa-history"></i> Transactions</a></li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <!-- Balance Section -->
+                <div class="balance-card">
+                    <div class="balance-header">
+                        <div>
+                            <h3>Your Balance</h3>
+                            <div class="balance-amount" id="balance-amount">$0.00</div>
+                        </div>
+                        <button class="add-balance-btn" id="add-balance-btn">
+                            <i class="fas fa-plus"></i> Add Balance
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Courses Section -->
+                <div id="courses-section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Available Courses</h2>
+                    <div class="courses-grid" id="courses-grid">
+                        <!-- Courses will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- My Courses Section -->
+                <div id="my-courses-section">
+                    <h2 class="section-title"><i class="fas fa-play-circle"></i> My Courses</h2>
+                    <div class="my-courses-grid" id="my-courses-grid">
+                        <!-- Purchased courses will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- Profile Section -->
+                <div id="profile-section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Profile</h2>
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar" id="profile-avatar">U</div>
+                            <div class="profile-info">
+                                <h3 id="profile-name">User Name</h3>
+                                <p id="profile-email">user@example.com</p>
+                                <p>Member since <span id="member-since">2023</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="stat-courses">0</div>
+                                <div class="stat-label">Courses Enrolled</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="stat-completed">0</div>
+                                <div class="stat-label">Courses Completed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="stat-hours">0</div>
+                                <div class="stat-label">Learning Hours</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="stat-certificates">0</div>
+                                <div class="stat-label">Certificates</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title"><i class="fas fa-cog"></i> Account Settings</h3>
+                    <div class="profile-card">
+                        <div class="form-group">
+                            <label for="update-name">Full Name</label>
+                            <input type="text" id="update-name" class="form-control" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="update-email">Email</label>
+                            <input type="email" id="update-email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <button class="btn" id="update-profile-btn">
+                            <i class="fas fa-save"></i> Update Profile
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Transactions Section -->
+                <div id="transactions-section" style="display: none;">
+                    <h2 class="section-title"><i class="fas fa-history"></i> Transaction History</h2>
+                    <div class="profile-card">
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-body">
+                                <!-- Transactions will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Video Player Section -->
+                <div class="video-player-container" id="video-player-container">
+                    <div class="video-controls">
+                        <button class="back-to-courses" id="back-to-courses">
+                            <i class="fas fa-arrow-left"></i> Back to Courses
+                        </button>
+                    </div>
+                    <div class="video-player" id="video-player">
+                        <video id="video-element" controls controlsList="nodownload">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="course-info">
+                        <h3 class="course-title" id="video-title">Course Title</h3>
+                        <p class="course-description" id="video-description">Course description will appear here.</p>
+                        <div class="video-controls" id="video-control-buttons">
+                            <!-- Video control buttons will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <h2>Add Balance</h2>
+            <p>Select a payment method to add funds to your account:</p>
+            
+            <div class="payment-option active" data-method="paytm">
+                <i class="fab fa-google-wallet payment-icon"></i>
+                <div>
+                    <h3>Paytm</h3>
+                    <p>Pay using Paytm wallet, UPI or debit/credit card</p>
+                </div>
+            </div>
+            
+            <div class="payment-option" data-method="card">
+                <i class="far fa-credit-card payment-icon"></i>
+                <div>
+                    <h3>Credit/Debit Card</h3>
+                    <p>Pay using your credit or debit card</p>
+                </div>
+            </div>
+            
+            <div class="payment-option" data-method="upi">
+                <i class="fas fa-mobile-alt payment-icon"></i>
+                <div>
+                    <h3>UPI</h3>
+                    <p>Pay using any UPI app</p>
+                </div>
+            </div>
+            
+            <div class="paytm-details" id="paytm-details">
+                <div class="paytm-qr">
+                    <!-- In a real implementation, you would use your Paytm QR code -->
+                    <div style="text-align: center; padding: 10px;">
+                        <p>Paytm QR Code</p>
+                        <p style="font-size: 12px;">(Place your QR code here)</p>
+                    </div>
+                </div>
+                <div class="paytm-number" id="paytm-number">+91 YOUR_PAYTM_NUMBER</div>
+                <p class="payment-instructions">Scan the QR code or send money to the Paytm number above. After payment, enter the transaction ID below.</p>
+                
+                <div class="form-group">
+                    <label for="transaction-id">Transaction ID</label>
+                    <input type="text" id="transaction-id" class="form-control" placeholder="Enter transaction ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount ($)</label>
+                    <input type="number" id="amount" class="form-control" placeholder="Enter amount" min="1">
+                </div>
+                
+                <button class="btn btn-block" id="confirm-payment">
+                    <span class="spinner" id="payment-spinner" style="display: none;"></span>
+                    Confirm Payment
+                </button>
+            </div>
+            
+            <div class="card-details" id="card-details" style="display: none;">
+                <!-- Card payment form would go here -->
+                <p>Card payment integration would be implemented here in a real application.</p>
+            </div>
+            
+            <div class="upi-details" id="upi-details" style="display: none;">
+                <!-- UPI payment form would go here -->
+                <p>UPI payment integration would be implemented here in a real application.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // ===== APPLICATION STATE AND DATA =====
+        let currentUser = null;
+        let users = JSON.parse(localStorage.getItem('cyberUsers')) || [];
+        let courses = [
+            {
+                id: 1,
+                title: "Introduction to Cybersecurity",
+                description: "Learn the fundamentals of cybersecurity, threats, and protection mechanisms. This course covers basic concepts, terminology, and the importance of cybersecurity in today's digital world.",
+                price: 0,
+                thumbnail: "Course 1",
+                videoFile: "videos/intro-cybersecurity.mp4", // Local video file path
+                duration: "8 hours",
+                lessons: 12,
+                difficulty: "beginner",
+                purchased: false,
+                progress: 0
+            },
+            {
+                id: 2,
+                title: "Network Security Fundamentals",
+                description: "Understand how to secure networks from various attacks and vulnerabilities. Learn about firewalls, VPNs, intrusion detection systems, and network monitoring.",
+                price: 59.99,
+                thumbnail: "Course 2",
+                videoFile: "videos/network-security.mp4", // Local video file path
+                duration: "10 hours",
+                lessons: 15,
+                difficulty: "intermediate",
+                purchased: false,
+                progress: 0
+            },
+            {
+                id: 3,
+                title: "Ethical Hacking & Penetration Testing",
+                description: "Learn ethical hacking techniques to identify and fix security vulnerabilities. Hands-on labs and real-world scenarios included.",
+                price: 79.99,
+                thumbnail: "Course 3",
+                videoFile: "videos/ethical-hacking.mp4", // Local video file path
+                duration: "15 hours",
+                lessons: 20,
+                difficulty: "advanced",
+                purchased: false,
+                progress: 0
+            },
+            {
+                id: 4,
+                title: "Cryptography & Secure Communications",
+                description: "Master encryption techniques and secure communication protocols. Learn about symmetric and asymmetric encryption, digital signatures, and PKI.",
+                price: 69.99,
+                thumbnail: "Course 4",
+                videoFile: "videos/cryptography.mp4", // Local video file path
+                duration: "12 hours",
+                lessons: 18,
+                difficulty: "intermediate",
+                purchased: false,
+                progress: 0
+            },
+            {
+                id: 5,
+                title: "Web Application Security",
+                description: "Learn how to secure web applications from common vulnerabilities like XSS and SQL injection. Practical exercises with OWASP Top 10.",
+                price: 64.99,
+                thumbnail: "Course 5",
+                videoFile: "videos/web-security.mp4", // Local video file path
+                duration: "14 hours",
+                lessons: 16,
+                difficulty: "intermediate",
+                purchased: false,
+                progress: 0
+            },
+            {
+                id: 6,
+                title: "Incident Response & Digital Forensics",
+                description: "Develop skills to respond to security incidents and conduct digital investigations. Learn about forensic tools and techniques.",
+                price: 74.99,
+                thumbnail: "Course 6",
+                videoFile: "videos/incident-response.mp4", // Local video file path
+                duration: "16 hours",
+                lessons: 22,
+                difficulty: "advanced",
+                purchased: false,
+                progress: 0
+            }
+        ];
+
+        // ===== DOM ELEMENTS =====
+        const authContainer = document.getElementById('auth-container');
+        const dashboard = document.getElementById('dashboard');
+        const themeToggle = document.getElementById('theme-toggle');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userAvatar = document.getElementById('user-avatar');
+        const userName = document.getElementById('user-name');
+        const balanceAmount = document.getElementById('balance-amount');
+        const addBalanceBtn = document.getElementById('add-balance-btn');
+        const paymentModal = document.getElementById('payment-modal');
+        const closeModal = document.getElementById('close-modal');
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const paytmDetails = document.getElementById('paytm-details');
+        const cardDetails = document.getElementById('card-details');
+        const upiDetails = document.getElementById('upi-details');
+        const confirmPaymentBtn = document.getElementById('confirm-payment');
+        const coursesGrid = document.getElementById('courses-grid');
+        const coursesSection = document.getElementById('courses-section');
+        const myCoursesSection = document.getElementById('my-courses-section');
+        const myCoursesGrid = document.getElementById('my-courses-grid');
+        const profileSection = document.getElementById('profile-section');
+        const transactionsSection = document.getElementById('transactions-section');
+        const videoPlayerContainer = document.getElementById('video-player-container');
+        const videoElement = document.getElementById('video-element');
+        const videoTitle = document.getElementById('video-title');
+        const videoDescription = document.getElementById('video-description');
+        const backToCourses = document.getElementById('back-to-courses');
+        const notification = document.getElementById('notification');
+        const sidebarMenu = document.querySelectorAll('.sidebar-menu a');
+        const profileAvatar = document.getElementById('profile-avatar');
+        const profileName = document.getElementById('profile-name');
+        const profileEmail = document.getElementById('profile-email');
+        const memberSince = document.getElementById('member-since');
+        const statCourses = document.getElementById('stat-courses');
+        const statCompleted = document.getElementById('stat-completed');
+        const statHours = document.getElementById('stat-hours');
+        const statCertificates = document.getElementById('stat-certificates');
+        const updateProfileBtn = document.getElementById('update-profile-btn');
+        const transactionsBody = document.getElementById('transactions-body');
+        const videoControlButtons = document.getElementById('video-control-buttons');
+
+        // ===== THEME TOGGLE FUNCTIONALITY =====
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const icon = themeToggle.querySelector('span');
+            if (document.body.classList.contains('light-theme')) {
+                icon.textContent = '☀️';
+            } else {
+                icon.textContent = '🌙';
+            }
+        });
+
+        // ===== AUTHENTICATION TAB SWITCHING =====
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                authTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding form
+                authForms.forEach(form => {
+                    form.classList.remove('active');
+                    if (form.id === `${targetTab}-form`) {
+                        form.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // ===== USER REGISTRATION =====
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            const spinner = document.getElementById('signup-spinner');
+            
+            // Show loading spinner
+            spinner.style.display = 'inline-block';
+            
+            // Validate form
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match!', 'error');
+                spinner.style.display = 'none';
+                return;
+            }
+            
+            if (password.length < 6) {
+                showNotification('Password must be at least 6 characters long!', 'error');
+                spinner.style.display = 'none';
+                return;
+            }
+            
+            // Check if user already exists
+            if (users.find(user => user.email === email)) {
+                showNotification('User with this email already exists!', 'error');
+                spinner.style.display = 'none';
+                return;
+            }
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                balance: 0,
+                purchasedCourses: [],
+                transactions: [],
+                joinDate: new Date().toISOString()
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('cyberUsers', JSON.stringify(users));
+            
+            showNotification('Account created successfully! Please login.', 'success');
+            
+            // Switch to login tab
+            authTabs[0].click();
+            signupForm.reset();
+            spinner.style.display = 'none';
+        });
+
+        // ===== USER LOGIN =====
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const spinner = document.getElementById('login-spinner');
+            
+            // Show loading spinner
+            spinner.style.display = 'inline-block';
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                
+                // Update UI
+                userAvatar.textContent = user.name.charAt(0).toUpperCase();
+                userName.textContent = user.name;
+                balanceAmount.textContent = `$${user.balance.toFixed(2)}`;
+                
+                // Show dashboard
+                authContainer.style.display = 'none';
+                dashboard.style.display = 'block';
+                
+                // Load courses and profile
+                loadCourses();
+                loadProfile();
+                loadTransactions();
+                
+                showNotification(`Welcome back, ${user.name}!`, 'success');
+            } else {
+                showNotification('Invalid email or password!', 'error');
+            }
+            
+            spinner.style.display = 'none';
+        });
+
+        // ===== LOGOUT FUNCTIONALITY =====
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            
+            // Show auth container
+            authContainer.style.display = 'flex';
+            dashboard.style.display = 'none';
+            
+            // Reset forms
+            loginForm.reset();
+            signupForm.reset();
+            
+            showNotification('Logged out successfully!', 'success');
+        });
+
+        // ===== PAYMENT MODAL FUNCTIONALITY =====
+        addBalanceBtn.addEventListener('click', () => {
+            paymentModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            paymentModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === paymentModal) {
+                paymentModal.style.display = 'none';
+            }
+        });
+
+        // Payment method selection
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Update active payment option
+                paymentOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                
+                const method = option.getAttribute('data-method');
+                
+                // Show corresponding payment details
+                paytmDetails.style.display = method === 'paytm' ? 'block' : 'none';
+                cardDetails.style.display = method === 'card' ? 'block' : 'none';
+                upiDetails.style.display = method === 'upi' ? 'block' : 'none';
+            });
+        });
+
+        // Confirm payment
+        confirmPaymentBtn.addEventListener('click', async () => {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const transactionId = document.getElementById('transaction-id').value;
+            const spinner = document.getElementById('payment-spinner');
+            
+            if (!amount || amount <= 0) {
+                showNotification('Please enter a valid amount!', 'error');
+                return;
+            }
+            
+            if (!transactionId) {
+                showNotification('Please enter a transaction ID!', 'error');
+                return;
+            }
+            
+            // Show loading spinner
+            spinner.style.display = 'inline-block';
+            
+            // Simulate payment processing
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Update user balance
+            currentUser.balance += amount;
+            
+            // Add transaction record
+            currentUser.transactions.push({
+                id: Date.now(),
+                date: new Date().toISOString(),
+                description: 'Balance added via Paytm',
+                amount: amount,
+                type: 'credit',
+                status: 'completed'
+            });
+            
+            // Update in users array
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex].balance = currentUser.balance;
+                users[userIndex].transactions = currentUser.transactions;
+                localStorage.setItem('cyberUsers', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Update UI
+            balanceAmount.textContent = `$${currentUser.balance.toFixed(2)}`;
+            loadTransactions();
+            
+            // Close modal and reset form
+            paymentModal.style.display = 'none';
+            document.getElementById('amount').value = '';
+            document.getElementById('transaction-id').value = '';
+            
+            spinner.style.display = 'none';
+            showNotification(`$${amount.toFixed(2)} added to your balance!`, 'success');
+        });
+
+        // ===== COURSE MANAGEMENT =====
+        function loadCourses() {
+            coursesGrid.innerHTML = '';
+            
+            courses.forEach(course => {
+                const isPurchased = currentUser.purchasedCourses.includes(course.id);
+                
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-thumbnail">
+                        ${course.thumbnail}
+                    </div>
+                    <div class="course-info">
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ${course.duration}</span>
+                            <span><i class="far fa-list-alt"></i> ${course.lessons} lessons</span>
+                            <span class="course-difficulty difficulty-${course.difficulty}">${course.difficulty}</span>
+                        </div>
+                        <div class="course-price">
+                            <span class="price">$${course.price.toFixed(2)}</span>
+                            <button class="purchase-btn ${isPurchased ? 'purchased' : ''}" 
+                                    data-id="${course.id}" 
+                                    ${isPurchased ? 'disabled' : ''}>
+                                ${isPurchased ? '<i class="fas fa-check"></i> Purchased' : '<i class="fas fa-shopping-cart"></i> Purchase'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                coursesGrid.appendChild(courseCard);
+            });
+            
+            // Add event listeners to purchase buttons
+            document.querySelectorAll('.purchase-btn:not(.purchased)').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const courseId = parseInt(e.target.getAttribute('data-id'));
+                    purchaseCourse(courseId);
+                });
+            });
+            
+            // Add event listeners to purchased courses to play video
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('purchase-btn')) {
+                        const courseId = parseInt(card.querySelector('.purchase-btn').getAttribute('data-id'));
+                        const course = courses.find(c => c.id === courseId);
+                        
+                        if (currentUser.purchasedCourses.includes(courseId)) {
+                            playCourseVideo(course);
+                        } else {
+                            showNotification('Please purchase this course to access the video content.', 'warning');
+                        }
+                    }
+                });
+            });
+        }
+
+        function loadMyCourses() {
+            myCoursesGrid.innerHTML = '';
+            
+            const myCourses = courses.filter(course => currentUser.purchasedCourses.includes(course.id));
+            
+            if (myCourses.length === 0) {
+                myCoursesGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-book-open" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <h3>No courses purchased yet</h3>
+                        <p>Browse our courses and start learning today!</p>
+                        <button class="btn" id="browse-courses-btn" style="margin-top: 20px;">
+                            <i class="fas fa-graduation-cap"></i> Browse Courses
+                        </button>
+                    </div>
+                `;
+                
+                document.getElementById('browse-courses-btn').addEventListener('click', () => {
+                    showSection('courses');
+                });
+                
+                return;
+            }
+            
+            myCourses.forEach(course => {
+                const progress = course.progress || 0;
+                
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-thumbnail">
+                        ${course.thumbnail}
+                    </div>
+                    <div class="course-info">
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${progress}%"></div>
+                        </div>
+                        <div class="progress-text">${progress}% Complete</div>
+                        <div class="course-price">
+                            <button class="btn btn-outline continue-btn" data-id="${course.id}">
+                                <i class="fas fa-play"></i> Continue Learning
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                myCoursesGrid.appendChild(courseCard);
+            });
+            
+            // Add event listeners to continue buttons
+            document.querySelectorAll('.continue-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const courseId = parseInt(e.target.getAttribute('data-id'));
+                    const course = courses.find(c => c.id === courseId);
+                    playCourseVideo(course);
+                });
+            });
+        }
+
+        async function purchaseCourse(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            
+            if (!course) {
+                showNotification('Course not found!', 'error');
+                return;
+            }
+            
+            if (currentUser.balance < course.price) {
+                showNotification('Insufficient balance! Please add funds.', 'error');
+                return;
+            }
+            
+            // Simulate purchase processing
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Deduct course price from balance
+            currentUser.balance -= course.price;
+            currentUser.purchasedCourses.push(courseId);
+            
+            // Add transaction record
+            currentUser.transactions.push({
+                id: Date.now(),
+                date: new Date().toISOString(),
+                description: `Purchased: ${course.title}`,
+                amount: -course.price,
+                type: 'debit',
+                status: 'completed'
+            });
+            
+            // Update in users array
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex].balance = currentUser.balance;
+                users[userIndex].purchasedCourses = currentUser.purchasedCourses;
+                users[userIndex].transactions = currentUser.transactions;
+                localStorage.setItem('cyberUsers', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Update UI
+            balanceAmount.textContent = `$${currentUser.balance.toFixed(2)}`;
+            loadCourses();
+            loadMyCourses();
+            loadProfile();
+            loadTransactions();
+            
+            showNotification(`Successfully purchased "${course.title}"!`, 'success');
+        }
+
+        function playCourseVideo(course) {
+            coursesSection.style.display = 'none';
+            myCoursesSection.style.display = 'none';
+            profileSection.style.display = 'none';
+            transactionsSection.style.display = 'none';
+            videoPlayerContainer.style.display = 'block';
+            
+            videoTitle.textContent = course.title;
+            videoDescription.textContent = course.description;
+            
+            // Set video source to local file
+            videoElement.src = course.videoFile;
+            
+            // Create video control buttons
+            videoControlButtons.innerHTML = `
+                <button class="btn" id="play-video-btn">
+                    <i class="fas fa-play"></i> Play Video
+                </button>
+                <button class="btn btn-outline" id="pause-video-btn">
+                    <i class="fas fa-pause"></i> Pause
+                </button>
+                <button class="btn btn-outline" id="restart-video-btn">
+                    <i class="fas fa-redo"></i> Restart
+                </button>
+            `;
+            
+            // Add event listeners to video control buttons
+            document.getElementById('play-video-btn').addEventListener('click', () => {
+                videoElement.play();
+            });
+            
+            document.getElementById('pause-video-btn').addEventListener('click', () => {
+                videoElement.pause();
+            });
+            
+            document.getElementById('restart-video-btn').addEventListener('click', () => {
+                videoElement.currentTime = 0;
+                videoElement.play();
+            });
+            
+            // Track video progress
+            videoElement.addEventListener('timeupdate', () => {
+                const progress = (videoElement.currentTime / videoElement.duration) * 100;
+                
+                // Update course progress in user data
+                const courseIndex = courses.findIndex(c => c.id === course.id);
+                if (courseIndex !== -1) {
+                    courses[courseIndex].progress = progress;
+                    
+                    // Update in user's purchased courses
+                    const userIndex = users.findIndex(u => u.id === currentUser.id);
+                    if (userIndex !== -1) {
+                        // Find the course in user's purchased courses and update progress
+                        const userCourseIndex = users[userIndex].purchasedCourses.indexOf(course.id);
+                        if (userCourseIndex !== -1) {
+                            // In a real implementation, you would update the progress in the user data
+                            // For now, we'll just update the local courses array
+                        }
+                    }
+                }
+            });
+        }
+
+        backToCourses.addEventListener('click', () => {
+            // Pause video when leaving
+            videoElement.pause();
+            videoPlayerContainer.style.display = 'none';
+            showSection('courses');
+        });
+
+        // ===== PROFILE MANAGEMENT =====
+        function loadProfile() {
+            profileAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
+            profileName.textContent = currentUser.name;
+            profileEmail.textContent = currentUser.email;
+            
+            const joinDate = new Date(currentUser.joinDate);
+            memberSince.textContent = joinDate.getFullYear();
+            
+            // Update stats
+            const purchasedCount = currentUser.purchasedCourses.length;
+            const completedCount = currentUser.purchasedCourses.filter(id => {
+                const course = courses.find(c => c.id === id);
+                return course && course.progress === 100;
+            }).length;
+            
+            const totalHours = currentUser.purchasedCourses.reduce((total, id) => {
+                const course = courses.find(c => c.id === id);
+                return total + (course ? parseInt(course.duration) : 0);
+            }, 0);
+            
+            statCourses.textContent = purchasedCount;
+            statCompleted.textContent = completedCount;
+            statHours.textContent = totalHours;
+            statCertificates.textContent = completedCount;
+            
+            // Set form values
+            document.getElementById('update-name').value = currentUser.name;
+            document.getElementById('update-email').value = currentUser.email;
+        }
+
+        updateProfileBtn.addEventListener('click', async () => {
+            const name = document.getElementById('update-name').value;
+            const email = document.getElementById('update-email').value;
+            
+            if (!name || !email) {
+                showNotification('Please fill in all fields!', 'error');
+                return;
+            }
+            
+            // Simulate update processing
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Update user data
+            currentUser.name = name;
+            currentUser.email = email;
+            
+            // Update in users array
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex].name = name;
+                users[userIndex].email = email;
+                localStorage.setItem('cyberUsers', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Update UI
+            userAvatar.textContent = name.charAt(0).toUpperCase();
+            userName.textContent = name;
+            loadProfile();
+            
+            showNotification('Profile updated successfully!', 'success');
+        });
+
+        // ===== TRANSACTIONS MANAGEMENT =====
+        function loadTransactions() {
+            transactionsBody.innerHTML = '';
+            
+            if (!currentUser.transactions || currentUser.transactions.length === 0) {
+                transactionsBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 40px;">
+                            <i class="fas fa-receipt" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
+                            <h3>No transactions yet</h3>
+                            <p>Your transaction history will appear here</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Sort transactions by date (newest first)
+            const sortedTransactions = [...currentUser.transactions].sort((a, b) => 
+                new Date(b.date) - new Date(a.date)
+            );
+            
+            sortedTransactions.forEach(transaction => {
+                const date = new Date(transaction.date);
+                const formattedDate = date.toLocaleDateString();
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formattedDate}</td>
+                    <td>${transaction.description}</td>
+                    <td class="transaction-amount ${transaction.amount > 0 ? 'positive' : 'negative'}">
+                        ${transaction.amount > 0 ? '+' : ''}$${Math.abs(transaction.amount).toFixed(2)}
+                    </td>
+                    <td>
+                        <span style="color: var(--success-color);">
+                            <i class="fas fa-check-circle"></i> ${transaction.status}
+                        </span>
+                    </td>
+                `;
+                
+                transactionsBody.appendChild(row);
+            });
+        }
+
+        // ===== SECTION NAVIGATION =====
+        function showSection(sectionName) {
+            // Hide all sections
+            coursesSection.style.display = 'none';
+            myCoursesSection.style.display = 'none';
+            profileSection.style.display = 'none';
+            transactionsSection.style.display = 'none';
+            videoPlayerContainer.style.display = 'none';
+            
+            // Show selected section
+            switch(sectionName) {
+                case 'courses':
+                    coursesSection.style.display = 'block';
+                    break;
+                case 'my-courses':
+                    myCoursesSection.style.display = 'block';
+                    loadMyCourses();
+                    break;
+                case 'profile':
+                    profileSection.style.display = 'block';
+                    loadProfile();
+                    break;
+                case 'transactions':
+                    transactionsSection.style.display = 'block';
+                    loadTransactions();
+                    break;
+            }
+            
+            // Update active menu item
+            sidebarMenu.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === sectionName) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        sidebarMenu.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.getAttribute('data-section');
+                showSection(section);
+            });
+        });
+
+        // ===== NOTIFICATION SYSTEM =====
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // ===== CHECK IF USER IS ALREADY LOGGED IN =====
+        function checkLoggedInUser() {
+            const savedUser = localStorage.getItem('currentUser');
+            
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                
+                // Update UI
+                userAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
+                userName.textContent = currentUser.name;
+                balanceAmount.textContent = `$${currentUser.balance.toFixed(2)}`;
+                
+                // Show dashboard
+                authContainer.style.display = 'none';
+                dashboard.style.display = 'block';
+                
+                // Load courses and profile
+                loadCourses();
+                loadProfile();
+                loadTransactions();
+            }
+        }
+
+        // Initialize the application
+        checkLoggedInUser();
+
+        // ===== HOW TO ADD LOCAL VIDEOS =====
+        /*
+        STEP-BY-STEP GUIDE TO ADD LOCAL VIDEOS:
+
+        1. CREATE A VIDEOS FOLDER:
+           - In your VS Code project, create a folder named "videos"
+           - Place your video files in this folder
+
+        2. FORMAT YOUR VIDEOS:
+           - Use MP4 format for best browser compatibility
+           - Recommended codec: H.264
+           - Keep file sizes reasonable for web streaming
+
+        3. UPDATE COURSE DATA:
+           - In the courses array above, update the videoFile property for each course
+           - Example: "videos/intro-cybersecurity.mp4"
+
+        4. SERVE YOUR FILES:
+           - For local testing, use a local server like Live Server in VS Code
+           - Right-click on your HTML file and select "Open with Live Server"
+           - This ensures proper video loading
+
+        5. SECURITY NOTE:
+           - In production, consider using a CDN for better performance
+           - Implement proper access controls to prevent unauthorized downloads
+
+        VIDEO FILE NAMING CONVENTION:
+           - Use descriptive names: intro-cybersecurity.mp4, network-security.mp4, etc.
+           - Avoid spaces in file names (use hyphens or underscores)
+
+        TROUBLESHOOTING:
+           - If videos don't play, check browser console for errors
+           - Ensure video files are in the correct location
+           - Verify video format is supported by browsers
+        */
+    </script>
+</body>
+</html>
